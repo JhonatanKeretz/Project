@@ -23,6 +23,7 @@
                 >
                   New Item
                 </v-btn>
+
               </template>
               <v-card>
                 <v-card-title>
@@ -98,6 +99,7 @@
                           label="Prioridade"
                           :items="prioridade"
                         ></v-select>
+                       
                       </v-col>
                       <v-col cols="12" sm="6">
                         <v-text-field
@@ -140,6 +142,8 @@
           </v-toolbar>
         </template>
         <template v-slot:item.actions="{ item }">
+           <TaskEdit 
+            id = "task._id"/>
           <v-icon small class="mr-2" @click="handleUpdate()">
             mdi-pencil
           </v-icon>
@@ -160,8 +164,10 @@ import { Task } from "@/interfaces/Task";
 import { createTask, deleteTask, getTasks, updateTask } from "@/services/TaskService";
 import { defineComponent } from "vue";
 import { RawLocation } from "vue-router";
+import TaskEdit from '../components/Modal/TaskEdit.vue'
 
 export default defineComponent({
+  components: { TaskEdit },
   data() {
     return {
       formTitle: "Criar Plano de Ação",
